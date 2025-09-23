@@ -108,23 +108,29 @@ const app = express();
 const server = http.createServer(app);
 
 // ✅ Configure CORS for production
-const allowedOrigins = ['http://localhost:3000',
-  'https://chat-mern-eight.vercel.app',
-  'https://chat-mern-kixiklmb8-bhavishnus-projects.vercel.app' // your frontend
-];
+// const allowedOrigins = [  'http://localhost:3000',
+//   'https://chat-mern-eight.vercel.app',
+//   'https://chat-mern-kixiklmb8-bhavishnus-projects.vercel.app' // your frontend
+// ];
 
+// app.use(cors({
+//   origin: function(origin, callback){
+//     if(!origin) return callback(null, true); // allow mobile apps / Postman
+//     if(allowedOrigins.indexOf(origin) === -1){
+//       const msg = 'The CORS policy for this site does not allow access from the specified Origin.';
+//       return callback(new Error(msg), false);
+//     }
+//     return callback(null, true);
+//   },
+//   credentials: true,
+//   methods: ['GET','POST','PUT','DELETE','OPTIONS']
+// }));
 app.use(cors({
-  origin: function(origin, callback){
-    if(!origin) return callback(null, true); // allow mobile apps / Postman
-    if(allowedOrigins.indexOf(origin) === -1){
-      const msg = 'The CORS policy for this site does not allow access from the specified Origin.';
-      return callback(new Error(msg), false);
-    }
-    return callback(null, true);
-  },
+  origin: '*',
   credentials: true,
   methods: ['GET','POST','PUT','DELETE','OPTIONS']
 }));
+
 
 app.use(express.json());
 

@@ -108,7 +108,7 @@ const app = express();
 const server = http.createServer(app);
 
 // ✅ Configure CORS for production
-const allowedOrigins = [
+const allowedOrigins = ['http://localhost:3000',
   'https://chat-mern-eight.vercel.app', // your frontend
 ];
 
